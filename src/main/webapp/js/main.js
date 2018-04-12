@@ -6,7 +6,7 @@ function sendData() {
 	var postData = $(nodeForm).serializeArray();
 	$.post("NodeCreatorServlet", postData, 
 			function(result, status) {
-				$('#responseForm').html(result);
+				$('#responseForm').text(result);
 			});
 };
 function computeData(){
@@ -14,6 +14,6 @@ function computeData(){
 	var postData = $(nodeForm).serializeArray();
 	$.post("PathfinderServlet", postData, 
 			function(result, status) {
-				$('#responseForm').html(result);
+				$('#responseForm').append(result);
 			});	
 };
