@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Hello AWS Web World!</title>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" media="screen">
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/main.js"></script>    
+  </head>
+  <body>
+
+      <div style="height: 10px;">
+      <h3>Map Constructor</h3>
+      In order to build a Subway map, you need to enter it 2 nodes by 2 nodes so we can have the distance
+      between each nodes.
+      <br />
+      <section id="MapConstructor">
+	      <form name="inputSubwayNode">
+    	  First Node Name:<input type="text" name="FirstName"/>
+      <br />
+      Second Node Name:<input type="text" name="SecondName"/>
+      <br />
+      Distance between nodes:<input type="number" name="NodeDistance"/>
+      <input type="button" value="submit" name="Soumettre" onclick="sendData()"/>      
+      </form>  
+      </section>    
+      <section id="PathConsult">
+      <h3>Interrogate Map</h3>
+		Select the 2 station that you would like to travale to / from in order to obtain the minimal
+		distance between the 2
+      <br />
+	      <form name="computeNode">
+    	  Origin Node Name:<input type="text" name="StartNode"/>
+      <br />
+	      Destination Node Name:<input type="text" name="DestinationNode"/>
+      <br />
+      <input type="button" value="submit" name="Soumettre" onclick="computeData()"/>      
+      </form>  
+      </section>
+    </div>
+  </body>
+</html>
