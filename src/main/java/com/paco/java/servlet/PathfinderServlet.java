@@ -59,4 +59,12 @@ public class PathfinderServlet extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 	    out.println("Distance between:"+sStart+" and "+sDestination+" is:"+oPath.getTotalDistance());
 	}
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		super.destroy();
+		Node.IOriginNode = null;
+	}
+	
 }

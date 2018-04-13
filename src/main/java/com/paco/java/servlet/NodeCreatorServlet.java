@@ -59,4 +59,11 @@ public class NodeCreatorServlet extends HttpServlet {
 	    String sTest = Node.ExtractSubwayMap();
 	    out.println(sTest);
 	}
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		super.destroy();
+		Node.IOriginNode = null;
+	}	
 }
