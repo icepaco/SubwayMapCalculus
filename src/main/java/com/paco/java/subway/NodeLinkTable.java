@@ -87,6 +87,7 @@ public class NodeLinkTable extends NodeLinker implements INodeLinker {
 		int iDistanceX1 = 0;
 		int iDistanceX2 = 0;
 		int iFinalDistanceX2 = Integer.MAX_VALUE;
+		INodeLinker oParam = new NodeLinker(oLink.getFirsttNode(), oLink.getSecondNode(), 0);
 		INodeLinker oCourant1;
 		INodeLinker oCourant2;
 			while ( (oCourant1 = getAlternatePath() ) != null)
@@ -98,7 +99,9 @@ public class NodeLinkTable extends NodeLinker implements INodeLinker {
 				{
 					iDistanceX2 = oCourant2.getDistance();
 					Intersection oX2 = (Intersection) oCourant2.getSecondNode();
-					oX1.SearchXNode(oLink, oX2);
+					Pathfinder.LSTOriginPath.clear();
+					INodeLinker oFinal = oX1.SearchXNode(oParam, oX2);
+					iDistanceX2 += oFinal.getDistance();
 					if (iFinalDistanceX2 > iDistanceX2)
 						iFinalDistanceX2 = iDistanceX2;
 				}

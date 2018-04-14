@@ -114,6 +114,14 @@ class PathfinderTest {
 		iDistance = oPathF.getTotalDistance();
 		if (iDistance != 18)
 			fail("Wrong distance");		
+		oNodeStart = Node.FindNode(_Node1);
+		oNodeDest = Node.FindNode(_Node5);
+		oPathF.setStartNode(oNodeStart);
+		oPathF.setDestinationNode(oNodeDest);
+		oPathF.FindOptimalPath();
+		iDistance = oPathF.getTotalDistance();
+		if (iDistance != 18)
+			fail("Wrong distance");		
 	}
 
 	private Node _Node1;

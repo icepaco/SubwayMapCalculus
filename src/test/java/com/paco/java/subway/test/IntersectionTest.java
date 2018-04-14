@@ -80,7 +80,7 @@ public class IntersectionTest {
 		Intersection oIn1 = (Intersection) _Link3.getNextNode();
 		Intersection oIn2 = (Intersection) _Link6.getNextNode();
 		int iDi = oIn1.CrossroadsDistance(oIn2);
-		if(iDi != 17)
+		if(iDi != 15)
 			fail("Wrong distance");
 	}
 	@Test

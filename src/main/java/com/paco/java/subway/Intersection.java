@@ -78,9 +78,9 @@ public class Intersection extends Node {
 			//If a double exists, we update to the optimal path
 			if (oLn.ContainsNode(oInter.getNodeName()) )
 			{
-				if(oLink.getIDistance() > oLn.getIDistance())
+				if(oLn.getIDistance() > oLink.getIDistance())
 				{
-					oLink = oLn;
+					oLn = oLink;
 					iterLink.remove();
 				}
 				else
@@ -137,6 +137,8 @@ public class Intersection extends Node {
 		IntersecLink oXLink;
 		Intersection oNXNode = this;
 		INodeLinker oNxLinker = null;
+		INodeLinker oOptimalLink = new NodeLinker(oLinker.getFirsttNode(), oLinker.getSecondNode(), 
+				Integer.MAX_VALUE);
 		if (this.getNodeName().equals(oXNode.getNodeName()))
 			return oLinker;
 		while ( (oXLink = this.getNextIntersection() ) != null )
@@ -145,15 +147,17 @@ public class Intersection extends Node {
 					oLinker.getDistance() );
 			if(!Pathfinder.LSTOriginPath.contains(oXLink))
 			{
-			Pathfinder.LSTOriginPath.add(oXLink);	
-			oXLink.setActiveNode(this);
-			oNXNode = (Intersection) oXLink.getNextNode();
-			oNxLinker.setSecondNode(oNXNode);
-			oNxLinker.setDistance(oNxLinker.getDistance() + oXLink.getIDistance());
-			oNxLinker = oNXNode.SearchXNode(oNxLinker, oXNode);
+				Pathfinder.LSTOriginPath.add(oXLink);	
+				oXLink.setActiveNode(this);
+				oNXNode = (Intersection) oXLink.getNextNode();
+				oNxLinker.setSecondNode(oNXNode);
+				oNxLinker.setDistance(oNxLinker.getDistance() + oXLink.getIDistance());
+				oNxLinker = oNXNode.SearchXNode(oNxLinker, oXNode);
+				if(oOptimalLink.getDistance() > oNxLinker.getDistance() )
+					oOptimalLink.setDistance(oNxLinker.getDistance() );
 			}
 		}
-			return oNxLinker;
+			return oOptimalLink;
 	}		
 	@Override
 	public INodeLinker ComputeNodeDistance(INodeLinker oLinker, Node oDestination)
